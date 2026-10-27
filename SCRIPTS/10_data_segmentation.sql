@@ -1,19 +1,18 @@
 /*
-===============================================================================
+
 Data Segmentation Analysis
-===============================================================================
+
 Purpose:
-    - To group data into meaningful categories for targeted insights.
-    - For customer segmentation, product categorization, or regional analysis.
+- To group data into meaningful categories for targeted insights.
+- For customer segmentation, product categorization, or regional analysis.
 
 SQL Functions Used:
-    - CASE: Defines custom segmentation logic.
-    - GROUP BY: Groups data into segments.
-===============================================================================
+- CASE: Defines custom segmentation logic.
+- GROUP BY: Groups data into segments.
+
 */
 
-/*Segment products into cost ranges and 
-count how many products fall into each segment*/
+– Segment products into cost ranges and count products in each segment.
 
 WITH product_segments AS (
 SELECT
@@ -22,7 +21,7 @@ product_name,
 cost,
 CASE
 WHEN cost < 100 THEN ‘Below 100’
-WHEN cost < 500 THEN ‘100-499.99’
+WHEN cost < 500 THEN ‘100 to below 500’
 WHEN cost <= 1000 THEN ‘500-1000’
 ELSE ‘Above 1000’
 END AS cost_range
@@ -34,14 +33,8 @@ COUNT(product_key) AS total_products
 FROM product_segments
 GROUP BY cost_range
 ORDER BY total_products DESC;
-SELECT 
-    cost_range,
-    COUNT(product_key) AS total_products
-FROM product_segments
-GROUP BY cost_range
-ORDER BY total_products DESC;
 
-/* Group customers by spending and the span of their recorded order history. */
+– Group customers by spending and the span of their recorded order history.
 
 WITH customer_spending AS (
 SELECT
