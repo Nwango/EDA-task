@@ -1,15 +1,11 @@
 
 /*
-===============================================================================
-Dimensions Exploration
-===============================================================================
 Purpose:
-    - To explore the structure of dimension tables.
-	
+Explore customer countries and product categories.
+
 SQL Functions Used:
-    - DISTINCT
-    - ORDER BY
-===============================================================================
+- DISTINCT
+- ORDER BY
 */
 
 -- Retrieve a list of unique countries from which customers originate
